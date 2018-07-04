@@ -1,5 +1,5 @@
 //variables
-var url = 'https://restcountries.eu/rest/v1/name/';
+var url = 'https://restcountries.eu/rest/v2/name/';
 var countriesList = document.getElementById('countries');
 
 document.getElementById('search').addEventListener('click', searchCountries);
@@ -21,6 +21,12 @@ function showCountriesList(resp) {
    resp.forEach(function(item){
     var liEl = document.createElement('li');
     liEl.innerText = "The country you have choosen is "+ item.name + " with " + item.population + " habitants which capital is " + item.capital+".\n\n";
+    var img = document.createElement('img');
+    img.setAttribute('src', item.flag);
+    img.setAttribute('width', 32);
+    img.setAttribute('height', 32);
+    liEl.appendChild(img);
+
     countriesList.appendChild(liEl);
 });
 }
